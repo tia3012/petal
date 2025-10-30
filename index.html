@@ -59,7 +59,6 @@
 <div id="loginBox" class="popup" aria-hidden="true">
   <div class="popup-content" role="dialog" aria-labelledby="">
 
-    <!-- ✅ نموذج تسجيل الدخول -->
     <div id="loginForm">
       <h2>تسجيل الدخول </h2>
       <input id="loginUsername" type="text" placeholder="اسم المستخدم" />
@@ -72,7 +71,6 @@
       <button class="closeBtn" onclick="closeLogin()">إغلاق</button>
     </div>
 
-    <!-- ✅ نموذج إنشاء الحساب -->
     <div id="signupForm" style="display:none;">
       <input id="signupUsername" type="text" placeholder="اسم المستخدم الجديد" />
 <input id="signupEmail" type="email" placeholder="البريد الإلكتروني" >
@@ -86,7 +84,6 @@
       <button class="closeBtn" onclick="closeLogin()">إغلاق</button>
     </div>
 
-    <!-- ✅ رسالة الترحيب -->
     <div id="welcomeMessage" style="display:none;">
       <p id="welcomeText"></p>
       <button onclick="logout()">تسجيل الخروج</button>
@@ -106,18 +103,6 @@
   </div>
 
 
-<div id="profileBox" class="popup">
-  <div class="popup-content">
-    <h3>حسابي</h3>
-    <p id="profileName"></p>
-    <p id="profileEmail"></p>
-    <p id="profilePassword"></p>
-    <div class="popup-buttons">
-      <button onclick="logout()">تسجيل الخروج</button>
-      <button onclick="closeProfile()">إغلاق</button>
-    </div>
-  </div>
-</div>
 
 <section class="hero">
     <div class="hero-content">
@@ -360,7 +345,19 @@
   </footer>
 
 <script src="script.js"></script>
-<!-- ✅ فورم الاشتراك الشهري -->
+<div id="profileBox" class="popup">
+  <div class="popup-content">
+    <h3>حسابي</h3>
+    <p id="profileName"></p>
+    <p id="profileEmail"></p>
+    <p id="profilePassword"></p>
+    <div class="popup-buttons">
+      <button onclick="logout()">تسجيل الخروج</button>
+      <button onclick="closeProfile()">إغلاق</button>
+    </div>
+  </div>
+</div>
+
 <div id="subscribePopup" class="popup" style="display: none;">
   <div class="popup-content">
     <h2>الاشتراك الشهري</h2>

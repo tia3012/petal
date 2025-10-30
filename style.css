@@ -105,14 +105,13 @@
     padding-left: 20px;
 
 }
-/* ====== القائمة الجانبية المحسّنة ====== */
 #sideMenu {
   position: fixed;
   top: 0;
   right: -270px;
   width: 260px;
   height: 100%;
-  background-color: #515A49; /* من ألوانك الهادئة */
+  background-color: #515A49; 
   color: #fff;
   box-shadow: -3px 0 10px rgba(0,0,0,0.3);
   transition: right 0.4s ease-in-out;
@@ -240,7 +239,7 @@
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #4CAF50; /* أخضر */
+  background-color: #4CAF50; 
   color: white;
   padding: 12px 20px;
   border-radius: 8px;
@@ -258,7 +257,6 @@
 }
 
 
-/* Hero Section */
 .hero {
     background-image: url('./img/hero.jpg');
     background-size: cover;
@@ -387,7 +385,6 @@
   color: #3B3F58;
 }
 
-/* ======= About Preview ======= */
 .about-preview .container {
         padding-top: 60px ;
 
@@ -768,7 +765,6 @@ input:focus, textarea:focus {
     }
 
 
-    /* Subscription Section */
 .subscription-section {
   background-color: #fff7f9;
   padding: 60px 0;
@@ -856,7 +852,6 @@ input:focus, textarea:focus {
 }
 
 
-/* ======= Animations ======= */
 @keyframes fadeIn {
     from {opacity:0;}
     to {opacity:1;}
