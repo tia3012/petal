@@ -1,0 +1,381 @@
+
+<!doctype html>
+<html lang="ar">
+<head>
+  <meta charset="utf-8">
+  <title>متجر بتله</title>
+</head>
+  <link rel="stylesheet" href="style.css">
+
+
+<body>
+<div id="notifyBox" class="notify"></div>
+
+  <header class="top-header">
+<button onclick="toggleMenu()" style="
+  background:none;
+  border:none;
+  color:#515A49;
+  font-size:22px;
+  cursor:pointer;
+">
+  ☰
+</button>
+    <div class="logo"><img src="img/logo.png" alt=""></div>
+    <div class="icons">
+      <span class="icon" onclick="openSearch()">🔍</span>
+      <span class="icon" onclick="openLogin()">👤</span>
+      <span class="icon" onclick="openCart()">🛒<span id="cartCount">0</span></span>
+    </div>
+  </header>
+
+<div id="sideMenu">
+  <button class="close-btn" onclick="toggleMenu()">×</button>
+  <h3>القائمة الرئيسية</h3>
+  <a href="index.html"> الصفحة الرئيسية</a>
+  <a href=shop.html> المتجر</a>
+  <a href="#aboutUs"> من نحن</a>
+  <a href="#bestsellers"> افضل المبيعات </a>
+  <a href="#subscription"> الاشتراكات</a>
+  <a href="#bigDeals"> عروض مميزة</a>
+  <a href="#contact"> تواصل معنا</a>
+  <hr style="border:0.5px solid #D7D4C9; margin:15px 0;">
+<li><a href="#" onclick="openProfile()">حسابي</a></li>
+</div>
+
+<div id="searchBox" class="popup" aria-hidden="true">
+  <div class="popup-content" role="dialog" aria-labelledby="searchTitle">
+    <h3 id="searchTitle">ابحثي في المتجر</h3>
+    <input id="searchInput" type="text" placeholder="اكتبي كلمة البحث..." style="padding:8px; width:200px;" onkeydown="if(event.key==='Enter') performSearch()">
+    <br><br>
+    <div id="searchItems" style="max-height:180px; overflow:auto; text-align:right;"></div>
+    <br>
+    <button onclick="performSearch()">بحث</button>
+    <button onclick="resetSearch()">عرض الكل</button>
+    <button onclick="closeSearch()">إغلاق</button>
+  </div>
+</div>
+
+<div id="loginBox" class="popup" aria-hidden="true">
+  <div class="popup-content" role="dialog" aria-labelledby="">
+
+    <!-- ✅ نموذج تسجيل الدخول -->
+    <div id="loginForm">
+      <h2>تسجيل الدخول </h2>
+      <input id="loginUsername" type="text" placeholder="اسم المستخدم" />
+      <input id="loginPassword" type="password" placeholder="كلمة المرور" />
+      <button onclick="handleLogin()">دخول</button>
+      <p class="switchText">
+        ليس لديك حساب؟
+        <a href="#" onclick="toggleForm('signup')">إنشاء حساب جديد</a>
+      </p>
+      <button class="closeBtn" onclick="closeLogin()">إغلاق</button>
+    </div>
+
+    <!-- ✅ نموذج إنشاء الحساب -->
+    <div id="signupForm" style="display:none;">
+      <input id="signupUsername" type="text" placeholder="اسم المستخدم الجديد" />
+<input id="signupEmail" type="email" placeholder="البريد الإلكتروني" >
+      <input id="signupPassword" type="password" placeholder="كلمة المرور" />
+      <input id="signupConfirm" type="password" placeholder="تأكيد كلمة المرور" />
+      <button onclick="handleSignup()">إنشاء الحساب</button>
+      <p class="switchText">
+        لديك حساب بالفعل؟
+        <a href="#" onclick="toggleForm('login')">تسجيل الدخول</a>
+      </p>
+      <button class="closeBtn" onclick="closeLogin()">إغلاق</button>
+    </div>
+
+    <!-- ✅ رسالة الترحيب -->
+    <div id="welcomeMessage" style="display:none;">
+      <p id="welcomeText"></p>
+      <button onclick="logout()">تسجيل الخروج</button>
+      <button class="closeBtn" onclick="closeLogin()">إغلاق</button>
+    </div>
+  </div>
+</div>
+
+
+
+  <div id="cartBox" class="popup">
+    <div class="popup-content">
+      <h3>🛍️ سلة المشتريات</h3>
+      <p id="cartItems">السلة فارغة حالياً</p>
+      <button onclick="closeCart()">إغلاق</button>
+    </div>
+  </div>
+
+
+<div id="profileBox" class="popup">
+  <div class="popup-content">
+    <h3>حسابي</h3>
+    <p id="profileName"></p>
+    <p id="profileEmail"></p>
+    <p id="profilePassword"></p>
+    <div class="popup-buttons">
+      <button onclick="logout()">تسجيل الخروج</button>
+      <button onclick="closeProfile()">إغلاق</button>
+    </div>
+  </div>
+</div>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>جمال الزهور يروي مشاعرك</h1>
+        <p>اكتشف باقات الزهور الرائعة التي تعبر عن الحب والفرح والاهتمام.</p>
+        <a href="shop.html" class="btn">تسوق الآن</a>
+    </div>
+</section>
+
+<section class="categories-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>الأقسام</h2>
+      <a href="/all-categories" class="view-more">عرض الكل</a>
+    </div>
+    <div class="categories-slider">
+      <div class="category-item">
+        <img src="img/1.jpeg" alt="باقة يدوية">
+        <span>باقة يدوية</span>
+      </div>
+      <div class="category-item">
+        <img src="img/box.jpg" alt="صناديق">
+        <span>صناديق</span>
+      </div>
+      <div class="category-item">
+        <img src="img/v1.jpeg" alt="مزهرية">
+        <span>مزهرية</span>
+      </div>
+      <div class="category-item">
+        <img src="img/s1.jpg" alt="فضيات">
+        <span>فضيات</span>
+      </div>
+      <div class="category-item">
+        <img src="img/c2.jpeg" alt="حلويات">
+        <span>حلويات</span>
+      </div>
+      <div class="category-item">
+        <img src="img/gifts.jpeg" alt="هدايا مميزة">
+        <span>هدايا مميزة</span>
+      </div>
+      <div class="category-item">
+        <img src="img/ch1.jpg" alt="شوكولاتة">
+        <span>شوكولاتة</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about-preview" id="aboutUs">
+    <div class="container">
+        <h2>مرحبًا بك في متجر بتله</h2>
+        <p>نؤمن في متجر بتله أن الزهور ليست مجرد هدايا، بل مشاعر ملفوفة بالجمال. 
+           باقاتنا المصممة بعناية تجعل كل لحظة مميزة.</p>
+        <div style="display:flex; gap:20px; justify-content:center; flex-wrap:wrap;">
+            <img src="img/about1.jpeg" width="220" height="150" style="border-radius:15px;" alt="باقة ورود">
+            <img src="img/about2.jpeg" width="180" height="200" style="transform: rotate(-5deg);" alt="زهور طبيعية">
+            <img src="img/about3.jpeg" width="200" height="140" style="border-radius:50%;" alt="تنسيقات جميلة">
+            <img src="img/about4.jpeg" width="210" height="180" style="object-fit:cover;" alt="ديكور بالزهور">
+        </div>
+    </div>
+</section>
+<section class="bestsellers" id="bestsellers">
+  <h2 class="section-title">الأكثر مبيعًا</h2>
+  <div class="products-container">
+
+    <div class="product-card">
+      <img src="img/p5.jpg" alt="باقة ورد التوليب">
+      <h3>باقة ورد التوليب</h3>
+      <p class="price">350 ريال</p>
+      <button onclick="addToCart('باقة ورد التوليب', 350)">إضافة إلى السلة</button>
+    </div>
+
+    <div class="product-card">
+      <img src="img/bestseller2.jpeg" alt="باقة الورد الأنيق">
+      <h3>باقة الورد الأنيق</h3>
+      <p class="price">420 ريال</p>
+      <button onclick="addToCart('باقة الورد الأنيق', 420)">إضافة إلى السلة</button>
+    </div>
+
+    <div class="product-card">
+      <img src="img/bestseller3.jpeg" alt="بوكيه ورد أحمر فاخر">
+      <h3>بوكيه ورد أحمر فاخر</h3>
+      <p class="price">380 ريال</p>
+      <button onclick="addToCart('بوكيه ورد أحمر فاخر', 380)">إضافة إلى السلة</button>
+    </div>
+
+    <div class="product-card">
+      <img src="img/bestseller1.jpeg" alt="ورد الأوركيد الأنيق">
+      <h3>ورد الأوركيد الأنيق</h3>
+      <p class="price">500 ريال</p>
+      <button onclick="addToCart('ورد الأوركيد الأنيق', 500)">إضافة إلى السلة</button>
+    </div>
+  </div>
+
+  <div class="view-more">
+    <a href="shop.html" class="more-btn">عرض المزيد</a>
+  </div>
+</section>
+
+<section class="subscription-section" id="subscription">
+  <div class="subscription-container">
+    <h2>اشترك شهريًا في باقات الزهور</h2>
+    <p>دلل نفسك أو من تحب بباقات زهور تُرسل إليك أسبوعيًا أو شهريًا بتصميمات أنيقة ومنعشة.</p>
+
+    <div class="plans">
+      <!-- Plan 1 -->
+      <div class="plan">
+        <h3>الباقة الأسبوعية</h3>
+        <p>زهور جديدة كل أسبوع بتصميم مختلف.</p>
+        <span class="price">299 ريال / شهر</span>
+<button onclick="openSubscribe()">اشترك الآن</button>
+      </div>
+
+      <!-- Plan 2 -->
+      <div class="plan popular">
+        <h3>الباقة الشهرية</h3>
+        <p>توصيل باقة زهور كبيرة شهريًا لمن تحب.</p>
+        <span class="price">499 ريال / شهر</span>
+<button onclick="openSubscribe()">اشترك الآن</button>
+      </div>
+
+      <!-- Plan 3 -->
+      <div class="plan">
+        <h3>باقة الهدايا</h3>
+        <p>زهور + شوكولاتة + بطاقة معايدة.</p>
+        <span class="price">699 ريال / شهر</span>
+<button onclick="openSubscribe()">اشترك الآن</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bestsellers" id="bigDeals">
+  <h2 class="section-title">عروض مميزة</h2>
+  <div class="products-container">
+
+    <div class="product-card">
+      <img src="img/p1.jpg" alt="باقة ورد الخزامى">
+      <h3>باقة ورد الخزامى</h3>
+      <p class="price">350 ريال</p>
+      <button onclick="addToCart('باقة ورد الخزامى', 350)">إضافة إلى السلة</button>
+    </div>
+
+    <div class="product-card">
+      <img src="img/p2.jpg" alt="بوكيه ورد الوردي الفاخر">
+      <h3>بوكيه ورد الوردي الفاخر</h3>
+      <p class="price">420 ريال</p>
+      <button onclick="addToCart('بوكيه ورد الوردي الفاخر', 420)">إضافة إلى السلة</button>
+    </div>
+
+    <div class="product-card">
+      <img src="img/p3.jpg" alt="بوكيه ورد أبيض فاخر">
+      <h3>بوكيه ورد أبيض فاخر</h3>
+      <p class="price">380 ريال</p>
+      <button onclick="addToCart('بوكيه ورد أبيض فاخر', 380)">إضافة إلى السلة</button>
+    </div>
+
+    <div class="product-card">
+      <img src="img/p4.jpg" alt="ورد الأوركيد الملكي">
+      <h3>ورد الأوركيد الملكي</h3>
+      <p class="price">500 ريال</p>
+      <button onclick="addToCart('ورد الأوركيد الملكي', 500)">إضافة إلى السلة</button>
+    </div>
+
+  </div>
+
+  <div class="view-more">
+    <a href="shop.html" class="more-btn">عرض المزيد</a>
+  </div>
+</section>
+
+ <section class="benefits-section">
+  <h2 class="section-title">مميزاتنا</h2>
+  <div class="benefits-slider">
+
+    <div class="benefit-slide active">
+      <img src="img/5.jpeg" alt="جودة الزهور">
+      <div class="benefit-text">
+        <h3>ضمان النضارة</h3>
+        <p>نضمن لك أفضل جودة للزهور بفضل اختيارنا لأجود المزارع، لتصلك زهور طازجة تعبّر عن مشاعرك بأناقة.</p>
+      </div>
+    </div>
+
+    <div class="benefit-slide">
+      <img src="img/4.jpeg" alt="تغليف أنيق">
+      <div class="benefit-text">
+        <h3>تغليف فاخر</h3>
+        <p>نهتم بأدق التفاصيل من لحظة اختيار الوردة حتى تغليفها، لتصل هديتك بشكل راقٍ ومميز.</p>
+      </div>
+    </div>
+
+    <div class="benefit-slide">
+      <img src="img/6.jpeg" alt="توصيل سريع">
+      <div class="benefit-text">
+        <h3>توصيل سريع</h3>
+        <p>نقدّم خدمة توصيل فورية داخل المدينة، لتصل الزهور في الوقت المناسب دون أي تأخير.</p>
+      </div>
+    </div>
+
+    <button class="prev">&#10094;</button>
+    <button class="next">&#10095;</button>
+  </div>
+</section>
+
+
+
+ <section class="contact-section" id="contact">
+  <h2 class="section-title">تواصلي معنا</h2>
+  <p class="contact-intro">
+    يسعدنا دائمًا سماع آرائك واستفساراتك، أرسلي لنا رسالة وسنرد عليكِ في أقرب وقت ممكن 🌸
+  </p>
+
+  <form class="contact-form">
+    <div class="form-group">
+      <label for="name">الاسم الكامل</label>
+      <input type="text" id="name" name="name" placeholder="أدخلي اسمك" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">البريد الإلكتروني</label>
+      <input type="email" id="email" name="email" placeholder="example@email.com" required>
+    </div>
+
+    <div class="form-group">
+      <label for="message">الرسالة</label>
+      <textarea id="message" name="message" rows="5" placeholder="اكتبي رسالتك هنا..." required></textarea>
+    </div>
+
+    <button type="submit" class="contact-btn">إرسال الرسالة</button>
+  </form>
+</section>
+
+  <footer>
+    <p>بتله
+    <p> خيارك المثالي للحصول على افضل الباقات من الورد الطبيعي وايضا الصناعي ذو الشكل والملمس الطبيعي</p>
+    <p>©️ 2025 بتله</p>
+    <p>للتواصل: <a href="mailto:petal@gmail.com">petal@gmail.com</a></p>
+    <p>الهاتف: 055667702
+
+  </footer>
+
+<script src="script.js"></script>
+<!-- ✅ فورم الاشتراك الشهري -->
+<div id="subscribePopup" class="popup" style="display: none;">
+  <div class="popup-content">
+    <h2>الاشتراك الشهري</h2>
+    <input type="text" id="subName" placeholder="الاسم الكامل">
+    <input type="email" id="subEmail" placeholder="البريد الإلكتروني">
+    <select id="subPlan">
+      <option value="">اختر الباقة</option>
+      <option value="الأساسية - 100 ريال">الأساسية - 100 ريال</option>
+      <option value="المميزة - 200 ريال">المميزة - 200 ريال</option>
+      <option value="الذهبية - 350 ريال">الذهبية - 350 ريال</option>
+    </select>
+    <button onclick="submitSubscription()">تأكيد الاشتراك</button>
+    <button class="closeBtn" onclick="closeSubscribe()">إغلاق</button>
+  </div>
+</div>
+
+</body>
+</html>

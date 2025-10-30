@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="ar">
+<head>
+  <meta charset="utf-8">
+  <title>متجر بتله</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+<div id="notifyBox" class="notify"></div>
+
+  <header class="top-header">
+<button onclick="toggleMenu()" style="
+  background:none;
+  border:none;
+  color:#515A49;
+  font-size:22px;
+  cursor:pointer;
+">
+  ☰
+</button>
+    <div class="logo"><a href="index.html"><img src="img/logo.png" alt=""></a></div>
+    <div class="icons">
+      <span class="icon" onclick="openSearch()">🔍</span>
+      <span class="icon" onclick="openLogin()">👤</span>
+      <span class="icon" onclick="openCart()">🛒<span id="cartCount">0</span></span>
+    </div>
+  </header>
+
+<div id="sideMenu">
+  <button class="close-btn" onclick="toggleMenu()">×</button>
+  <h3>القائمة الرئيسية</h3>
+  <a href="index.html"> الصفحة الرئيسية</a>
+  <a href=shop.html> المتجر</a>
+  <a href="#flowers"> ورد بانواعه</a>
+  <a href="#gifts"> هدايا</a>
+  <a href="#cake"> كيك</a>
+  <hr style="border:0.5px solid #D7D4C9; margin:15px 0;">
+<li><a href="#" onclick="openProfile()">حسابي</a></li>
+</div>
+
+<div id="searchBox" class="popup" aria-hidden="true">
+  <div class="popup-content" role="dialog" aria-labelledby="searchTitle">
+    <h3 id="searchTitle">ابحثي في المتجر</h3>
+    <input id="searchInput" type="text" placeholder="اكتبي كلمة البحث..." style="padding:8px; width:200px;" onkeydown="if(event.key==='Enter') performSearch()">
+    <br><br>
+    <div id="searchItems" style="max-height:180px; overflow:auto; text-align:right;"></div>
+    <br>
+    <button onclick="performSearch()">بحث</button>
+    <button onclick="resetSearch()">عرض الكل</button>
+    <button onclick="closeSearch()">إغلاق</button>
+  </div>
+</div>
+
+<div id="loginBox" class="popup" aria-hidden="true">
+  <div class="popup-content" role="dialog" aria-labelledby="">
+
+    <div id="loginForm">
+      <h2>تسجيل الدخول </h2>
+      <input id="loginUsername" type="text" placeholder="اسم المستخدم" />
+      <input id="loginPassword" type="password" placeholder="كلمة المرور" />
+      <button onclick="handleLogin()">دخول</button>
+      <p class="switchText">
+        ليس لديك حساب؟
+        <a href="#" onclick="toggleForm('signup')">إنشاء حساب جديد</a>
+      </p>
+      <button class="closeBtn" onclick="closeLogin()">إغلاق</button>
+    </div>
+
+    <div id="signupForm" style="display:none;">
+      <input id="signupUsername" type="text" placeholder="اسم المستخدم الجديد" />
+<input id="signupEmail" type="email" placeholder="البريد الإلكتروني" >
+      <input id="signupPassword" type="password" placeholder="كلمة المرور" />
+      <input id="signupConfirm" type="password" placeholder="تأكيد كلمة المرور" />
+      <button onclick="handleSignup()">إنشاء الحساب</button>
+      <p class="switchText">
+        لديك حساب بالفعل؟
+        <a href="#" onclick="toggleForm('login')">تسجيل الدخول</a>
+      </p>
+      <button class="closeBtn" onclick="closeLogin()">إغلاق</button>
+    </div>
+
+]    <div id="welcomeMessage" style="display:none;">
+      <p id="welcomeText"></p>
+      <button onclick="logout()">تسجيل الخروج</button>
+      <button class="closeBtn" onclick="closeLogin()">إغلاق</button>
+    </div>
+  </div>
+</div>
+
+
+  <div id="cartBox" class="popup">
+    <div class="popup-content">
+      <h3>🛍️ سلة المشتريات</h3>
+      <p id="cartItems">السلة فارغة حالياً</p>
+      <button onclick="closeCart()">إغلاق</button>
+    </div>
+  </div>
+
+
+<div id="profileBox" class="popup">
+  <div class="popup-content">
+    <h3>حسابي</h3>
+    <p id="profileName"></p>
+    <p id="profileEmail"></p>
+    <p id="profilePassword"></p>
+    <div class="popup-buttons">
+      <button onclick="logout()">تسجيل الخروج</button>
+      <button onclick="closeProfile()">إغلاق</button>
+    </div>
+  </div>
+</div>
+
+<section class="hero2">
+    <div class="hero2-content">
+  <h1  id="store">جميع المنتجات</h1>
+    </div></section>
+
+<section class="bestsellers" id="flowers">
+  <h2 class="section-title">ورد حقيقي وصناعي</h2>
+  <div class="products-container">
+
+    <div class="product-card">
+      <img src="img/p5.jpg" alt="باقة ورد التوليب">
+      <h3>باقة ورد التوليب</h3>
+      <p class="price">350 ريال</p>
+      <button onclick="addToCart('باقة ورد التوليب', 350)">إضافة إلى السلة</button>
+    </div>
+
+    <div class="product-card">
+      <img src="img/bestseller2.jpeg" alt="باقة الورد الأنيق">
+      <h3>باقة الورد الأنيق</h3>
+      <p class="price">420 ريال</p>
+      <button onclick="addToCart('باقة الورد الأنيق', 420)">إضافة إلى السلة</button>
+    </div>
+
+    <div class="product-card">
+      <img src="img/bestseller3.jpeg" alt="بوكيه ورد أحمر فاخر">
+      <h3>بوكيه ورد أحمر فاخر</h3>
+      <p class="price">380 ريال</p>
+      <button onclick="addToCart('بوكيه ورد أحمر فاخر', 380)">إضافة إلى السلة</button>
+    </div>
+
+    <div class="product-card">
+      <img src="img/bestseller1.jpeg" alt="ورد الأوركيد الأنيق">
+      <h3>ورد الأوركيد الأنيق</h3>
+      <p class="price">500 ريال</p>
+      <button onclick="addToCart('ورد الأوركيد الأنيق', 500)">إضافة إلى السلة</button>
+    </div>
+
+    <div class="product-card">
+      <img src="img/11.jpeg" alt="بوكيه ورد صناعي">
+      <h3>بوكيه ورد صناعي</h3>
+      <p>45 ريال</p>
+      <button onclick="addToCart('بوكيه ورد صناعي',45)">إضافة إلى السلة</button>
+    </div>
+    <div class="product-card">
+      <img src="img/12.jpg" alt="بوكيه زنابق صناعية">
+      <h3>بوكيه زنابق صناعية</h3>
+      <p>55 ريال</p>
+      <button onclick="addToCart('بوكيه زنابق صناعية',55)">إضافة إلى السلة</button>
+    </div>
+    <div class="product-card">
+      <img src="img/13.jpg" alt="باقة توليب صناعية">
+      <h3>باقة توليب صناعية</h3>
+      <p>50 ريال</p>
+      <button onclick="addToCart('باقة توليب صناعية',50)">إضافة إلى السلة</button>
+    </div>
+  </div>
+</section>
+
+  <section class="bestsellers" id="gifts">
+  <h2 class="section-title">الهدايا </h2>
+  <div class="products-container">
+
+    <div class="product-card">
+      <img src="img/p1.jpg" alt="باقة ورد الخزامى">
+      <h3>باقة ورد الخزامى</h3>
+      <p class="price">350 ريال</p>
+      <button onclick="addToCart('باقة ورد الخزامى', 350)">إضافة إلى السلة</button>
+    </div>
+
+    <div class="product-card">
+      <img src="img/p2.jpg" alt="بوكيه ورد الوردي الفاخر">
+      <h3>بوكيه ورد الوردي الفاخر</h3>
+      <p class="price">420 ريال</p>
+      <button onclick="addToCart('بوكيه ورد الوردي الفاخر', 420)">إضافة إلى السلة</button>
+    </div>
+
+    <div class="product-card">
+      <img src="img/p3.jpg" alt="بوكيه ورد أبيض فاخر">
+      <h3>بوكيه ورد أبيض فاخر</h3>
+      <p class="price">380 ريال</p>
+      <button onclick="addToCart('بوكيه ورد أبيض فاخر', 380)">إضافة إلى السلة</button>
+    </div>
+
+    <div class="product-card">
+      <img src="img/p4.jpg" alt="ورد الأوركيد الملكي">
+      <h3>ورد الأوركيد الملكي</h3>
+      <p class="price">500 ريال</p>
+      <button onclick="addToCart('ورد الأوركيد الملكي', 500)">إضافة إلى السلة</button>
+    </div>
+
+  </div>
+</section>
+<!-- سكشن كيك -->
+<section class="bestsellers" id="cake">
+  <h2 class="section-title"> كيك</h2>
+  <div class="products-container"> 
+
+     <div class="product-card">
+      <img src="img/c6.jpeg" alt="كيك شوكولاتة">
+      <h3>كيك شوكولاتة</h3>
+      <p>120 ريال</p>
+      <button onclick="addToCart('كيك شوكولاتة',120)">إضافة إلى السلة</button>
+    </div>
+
+    <div class="product-card">
+      <img src="img/c1.jpg" alt="كيك فانيليا">
+      <h3>كيك فانيليا</h3>
+      <p>100 ريال</p>
+      <button onclick="addToCart('كيك فانيليا',100)">إضافة إلى السلة</button>
+    </div>
+    <div class="product-card">
+      <img src="img/c5.jpg" alt="كيك فراولة">
+      <h3>كيك فراولة</h3>
+      <p>110 ريال</p>
+      <button onclick="addToCart('كيك فراولة',110)">إضافة إلى السلة</button>
+    </div>
+  </div>
+</section>
+
+
+  <footer>
+    <p>بتله
+    <p> خيارك المثالي للحصول على افضل الباقات من الورد الطبيعي وايضا الصناعي ذو الشكل والملمس الطبيعي</p>
+    <p>©️ 2025 بتله</p>
+    <p>للتواصل: <a href="mailto:petal@gmail.com">petal@gmail.com</a></p>
+    <p>الهاتف: 055667702
+
+  </footer>
+<script src="script.js"></script>
+
+
+
+</body>
+</html>

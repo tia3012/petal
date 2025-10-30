@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="ar">
+<head>
+  <meta charset="utf-8">
+  <title>متجر بتله</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<div id="notifyBox" class="notify"></div>
+
+  <header class="top-header">
+<button onclick="toggleMenu()" style="
+  background:none;
+  border:none;
+  color:#515A49;
+  font-size:22px;
+  cursor:pointer;
+">
+  ☰
+</button>
+    <div class="logo">Petal</div>
+    <div class="icons">
+      <span class="icon" onclick="openSearch()">🔍</span>
+      <span class="icon" onclick="openLogin()">👤</span>
+      <span class="icon" onclick="openCart()">🛒<span id="cartCount">0</span></span>
+    </div>
+  </header>
+
+<div id="sideMenu">
+  <button class="close-btn" onclick="toggleMenu()">×</button>
+  <h3>القائمة الرئيسية</h3>
+  <a href="index.html"> الصفحة الرئيسية</a>
+  <a href=shop.html> المتجر</a>
+  <a href="offers.html"> العروض</a>
+  <a href="about.html"> من نحن</a>
+  <a href="contact.html"> تواصل معنا</a>
+  <hr style="border:0.5px solid #D7D4C9; margin:15px 0;">
+<li><a href="#" onclick="openProfile()">حسابي</a></li>
+</div>
+
+<div id="searchBox" class="popup" aria-hidden="true">
+  <div class="popup-content" role="dialog" aria-labelledby="searchTitle">
+    <h3 id="searchTitle">ابحثي في المتجر</h3>
+    <input id="searchInput" type="text" placeholder="اكتبي كلمة البحث..." style="padding:8px; width:200px;" onkeydown="if(event.key==='Enter') performSearch()">
+    <br><br>
+    <div id="searchItems" style="max-height:180px; overflow:auto; text-align:right;"></div>
+    <br>
+    <button onclick="performSearch()">بحث</button>
+    <button onclick="resetSearch()">عرض الكل</button>
+    <button onclick="closeSearch()">إغلاق</button>
+  </div>
+</div>
+
+<div id="loginBox" class="popup" aria-hidden="true">
+  <div class="popup-content" role="dialog" aria-labelledby="">
+
+    <!-- ✅ نموذج تسجيل الدخول -->
+    <div id="loginForm">
+      <h2>تسجيل الدخول </h2>
+      <input id="loginUsername" type="text" placeholder="اسم المستخدم" />
+      <input id="loginPassword" type="password" placeholder="كلمة المرور" />
+      <button onclick="handleLogin()">دخول</button>
+      <p class="switchText">
+        ليس لديك حساب؟
+        <a href="#" onclick="toggleForm('signup')">إنشاء حساب جديد</a>
+      </p>
+      <button class="closeBtn" onclick="closeLogin()">إغلاق</button>
+    </div>
+
+    <!-- ✅ نموذج إنشاء الحساب -->
+    <div id="signupForm" style="display:none;">
+      <input id="signupUsername" type="text" placeholder="اسم المستخدم الجديد" />
+<input id="signupEmail" type="email" placeholder="البريد الإلكتروني" >
+      <input id="signupPassword" type="password" placeholder="كلمة المرور" />
+      <input id="signupConfirm" type="password" placeholder="تأكيد كلمة المرور" />
+      <button onclick="handleSignup()">إنشاء الحساب</button>
+      <p class="switchText">
+        لديك حساب بالفعل؟
+        <a href="#" onclick="toggleForm('login')">تسجيل الدخول</a>
+      </p>
+      <button class="closeBtn" onclick="closeLogin()">إغلاق</button>
+    </div>
+
+    <!-- ✅ رسالة الترحيب -->
+    <div id="welcomeMessage" style="display:none;">
+      <p id="welcomeText"></p>
+      <button onclick="logout()">تسجيل الخروج</button>
+      <button class="closeBtn" onclick="closeLogin()">إغلاق</button>
+    </div>
+  </div>
+</div>
+
+
+  <div id="cartBox" class="popup">
+    <div class="popup-content">
+      <h3>🛍️ سلة المشتريات</h3>
+      <p id="cartItems">السلة فارغة حالياً</p>
+      <button onclick="closeCart()">إغلاق</button>
+    </div>
+  </div>
+
+
+<div id="profileBox" class="popup">
+  <div class="popup-content">
+    <h3>حسابي</h3>
+    <p id="profileName"></p>
+    <p id="profileEmail"></p>
+    <p id="profilePassword"></p>
+    <div class="popup-buttons">
+      <button onclick="logout()">تسجيل الخروج</button>
+      <button onclick="closeProfile()">إغلاق</button>
+    </div>
+  </div>
+</div>
+
+ 
+  <div class="container">
+    <div class="product-image">
+      <img src="img/p1.jpg" alt="Bouquet">
+    </div>
+
+    <div class="product-details">
+      <h1>باقة ورد فاخرة مع شوكولاتة</h1>
+      <div class="price">EGP 3458</div>
+      <div class="description">
+        باقة رائعة من الزهور الحمراء الفاخرة مع صندوق شوكولاتة مميز. مثالية للمناسبات الخاصة وللتعبير عن مشاعرك الجميلة.
+      </div>
+
+      <div class="quantity">
+        <label>الكمية:</label>
+        <button id="minus">-</button>
+        <input type="number" id="quantity" value="1" min="1">
+        <button id="plus">+</button>
+      </div>
+
+      <div class="message-box">
+        <label for="message">رسالتك مع الهدية:</label>
+        <textarea id="message" placeholder="اكتبي هنا رسالتك..."></textarea>
+      </div>
+
+      <div class="buttons">
+        <button class="buy-btn">إضافة إلى السلة 🛒</button>
+        <button class="btn btn-outline">اشتري الآن 💝</button>
+      </div>
+    </div>
+  </div>
+
+ 
+
+  <footer>
+    <p>بتله
+    <p> خيارك المثالي للحصول على افضل الباقات من الورد الطبيعي وايضا الصناعي ذو الشكل والملمس الطبيعي</p>
+    <p>©️ 2025 بتله</p>
+    <p>للتواصل: <a href="mailto:petal@gmail.com">petal@gmail.com</a></p>
+    <p>الهاتف: 055667702
+
+  </footer>
+<script src="script.js"></script>
+ <script>
+    const plus = document.getElementById('plus');
+    const minus = document.getElementById('minus');
+    const quantityInput = document.getElementById('quantity');
+
+    plus.addEventListener('click', () => {
+      quantityInput.value = parseInt(quantityInput.value) + 1;
+    });
+
+    minus.addEventListener('click', () => {
+      if (parseInt(quantityInput.value) > 1) {
+        quantityInput.value = parseInt(quantityInput.value) - 1;
+      }
+    });
+  </script>
+
+
+</body>
+</html>
+
+
+
