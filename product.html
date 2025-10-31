@@ -189,7 +189,7 @@
         <textarea id="giftMessage" placeholder="اكتب رسالة الإهداء (اختياري)"></textarea>
 
         <div class="action-buttons">
-          <button class="add-cart-btn" onclick="addToCart()">إضافة إلى السلة</button>
+          <button class="add-cart-btn" onclick="addToCart2()">إضافة إلى السلة</button>
           <button class="buy-now-btn" onclick="buyNow()">اشترِ الآن</button>
         </div>
       </div>
@@ -210,7 +210,7 @@
       console.log("لا توجد بيانات للمنتج في الرابط!");
     }
 
-    // التحكم في الكمية
+   
     function increaseQty() {
       const qty = document.getElementById("quantity");
       qty.value = parseInt(qty.value) + 1;
@@ -220,9 +220,25 @@
       if (parseInt(qty.value) > 1) qty.value = parseInt(qty.value) - 1;
     }
 
-    function addToCart() {
-      showNotification("تمت إضافة المنتج إلى السلة ");
-    }
+   function addToCart2() {
+  const name = document.getElementById("productName").innerText;
+  const priceText = document.getElementById("productPrice").innerText;
+  const price = parseFloat(priceText.replace(" ريال", ""));
+  const quantity = parseInt(document.getElementById("quantity").value);
+  const message = document.getElementById("giftMessage").value.trim();
+
+  for (let i = 0; i < quantity; i++) {
+    cart.push({ name, price, message });
+  }
+
+  document.getElementById("cartCount").textContent = cart.length;
+  document.getElementById("cartItems").textContent = cart
+    .map((item, index) => `${index+1}. ${item.name} - ${item.price} ريال${item.message ? ' (رسالة: '+item.message+')' : ''}`)
+    .join("\n");
+
+  showNotification(`${name} تمت إضافته إلى السلة!`);
+}
+
 
     function buyNow() {
       showNotification("تم إتمام عملية الشراء بنجاح ");
