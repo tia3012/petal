@@ -212,7 +212,19 @@
   button:hover {
     background-color: #899798;
   }
+  
+.btnd{
+      background-color: #515a49;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    text-decoration: none;
 
+}
   .switchText {
     font-size: 13px;
     color: #555;
@@ -458,20 +470,7 @@
   font-size: 1.1em;
 }
 
-.buy-btn {
-  background-color: #515A49;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 1em;
-  transition: background-color 0.3s ease;
-}
-
-.buy-btn:hover {
-  background-color: #a3154b;
-}
+/*  */
 .view-more {
   margin-top: 40px;
 }

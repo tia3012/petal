@@ -4,7 +4,125 @@
   <meta charset="utf-8">
   <title>متجر بتله</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: "Tajawal", sans-serif;
+      background: linear-gradient(to bottom right, #ffe6f0, #fff6f9);
+      margin: 50px 0;
+      padding: 0;
+    }
 
+    .product-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 20px;
+    }
+
+    .product-container {
+      display: flex;
+      gap: 40px;
+      background: #fff;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 4px 20px rgba(255, 182, 193, 0.3);
+      max-width: 900px;
+      width: 100%;
+    }
+
+    .product-image img {
+      width: 350px;
+      border-radius: 15px;
+    }
+
+    .product-details {
+      flex: 1;
+    }
+
+    .product-details h2 {
+      font-size: 26px;
+      color: #515A49;
+    }
+
+    .price {
+      font-size: 22px;
+      color: #e85a8c;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .quantity-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .qty-btn {
+      background: #ffc6d9;
+      border: none;
+      font-size: 22px;
+      padding: 5px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      color: #a62d68;
+    }
+
+    .qty-btn:hover {
+      background: #ffb3cc;
+    }
+
+    #quantity {
+      width: 60px;
+      text-align: center;
+      border: 2px solid #f7c1d3;
+      border-radius: 8px;
+      font-size: 18px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 90px;
+      border-radius: 10px;
+      border: 2px solid #f6b8ca;
+      padding: 10px;
+      font-size: 16px;
+      resize: none;
+      margin-bottom: 20px;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .add-cart-btn, .buy-now-btn {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .add-cart-btn {
+      background: #ffc6d9;
+      color: #515A49;
+    }
+
+    .buy-now-btn {
+      background: #515A49;
+      color: #fff;
+    }
+
+    .add-cart-btn:hover {
+      background: #ffb3cc;
+    }
+
+    .buy-now-btn:hover {
+      background: #d84c7c;
+    }
+  </style>
 </head>
 <body>
 <div id="notifyBox" class="notify"></div>
@@ -19,7 +137,7 @@
 ">
   ☰
 </button>
-    <div class="logo">Petal</div>
+    <div class="logo"><a href="index.html"><img src="img/logo.png" alt=""></a></div>
     <div class="icons">
       <span class="icon" onclick="openSearch()">🔍</span>
       <span class="icon" onclick="openLogin()">👤</span>
@@ -32,9 +150,7 @@
   <h3>القائمة الرئيسية</h3>
   <a href="index.html"> الصفحة الرئيسية</a>
   <a href=shop.html> المتجر</a>
-  <a href="offers.html"> العروض</a>
-  <a href="about.html"> من نحن</a>
-  <a href="contact.html"> تواصل معنا</a>
+
   <hr style="border:0.5px solid #D7D4C9; margin:15px 0;">
 <li><a href="#" onclick="openProfile()">حسابي</a></li>
 </div>
@@ -51,6 +167,67 @@
     <button onclick="closeSearch()">إغلاق</button>
   </div>
 </div>
+<section>
+
+</section>
+  <section class="product-section">
+    <div class="product-container"> 
+      <div class="product-image">
+        <img id="productImg" src="" alt="صورة المنتج">
+      </div>
+
+      <div class="product-details">
+        <h2 id="productName">اسم المنتج</h2>
+        <p class="price" id="productPrice">0 ريال</p>
+
+        <div class="quantity-box">
+          <button class="qty-btn" onclick="decreaseQty()">−</button>
+          <input type="number" id="quantity" value="1" min="1" />
+          <button class="qty-btn" onclick="increaseQty()">+</button>
+        </div>
+
+        <textarea id="giftMessage" placeholder="اكتب رسالة الإهداء (اختياري)"></textarea>
+
+        <div class="action-buttons">
+          <button class="add-cart-btn" onclick="addToCart()">إضافة إلى السلة</button>
+          <button class="buy-now-btn" onclick="buyNow()">اشترِ الآن</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get("name");
+    const price = params.get("price");
+    const img = params.get("img");
+
+    if (name && price && img) {
+      document.getElementById("productName").innerText = decodeURIComponent(name);
+      document.getElementById("productPrice").innerText = decodeURIComponent(price) + " ريال";
+      document.getElementById("productImg").src = decodeURIComponent(img);
+    } else {
+      console.log("لا توجد بيانات للمنتج في الرابط!");
+    }
+
+    // التحكم في الكمية
+    function increaseQty() {
+      const qty = document.getElementById("quantity");
+      qty.value = parseInt(qty.value) + 1;
+    }
+    function decreaseQty() {
+      const qty = document.getElementById("quantity");
+      if (parseInt(qty.value) > 1) qty.value = parseInt(qty.value) - 1;
+    }
+
+    function addToCart() {
+      showNotification("تمت إضافة المنتج إلى السلة ");
+    }
+
+    function buyNow() {
+      showNotification("تم إتمام عملية الشراء بنجاح ");
+    }
+  </script>
 
 <div id="loginBox" class="popup" aria-hidden="true">
   <div class="popup-content" role="dialog" aria-labelledby="">
@@ -80,7 +257,7 @@
       <button class="closeBtn" onclick="closeLogin()">إغلاق</button>
     </div>
 
-    <div id="welcomeMessage" style="display:none;">
+]    <div id="welcomeMessage" style="display:none;">
       <p id="welcomeText"></p>
       <button onclick="logout()">تسجيل الخروج</button>
       <button class="closeBtn" onclick="closeLogin()">إغلاق</button>
@@ -110,69 +287,6 @@
     </div>
   </div>
 </div>
-
- 
-  <div class="container">
-    <div class="product-image">
-      <img src="img/p1.jpg" alt="Bouquet">
-    </div>
-
-    <div class="product-details">
-      <h1>باقة ورد فاخرة مع شوكولاتة</h1>
-      <div class="price">EGP 3458</div>
-      <div class="description">
-        باقة رائعة من الزهور الحمراء الفاخرة مع صندوق شوكولاتة مميز. مثالية للمناسبات الخاصة وللتعبير عن مشاعرك الجميلة.
-      </div>
-
-      <div class="quantity">
-        <label>الكمية:</label>
-        <button id="minus">-</button>
-        <input type="number" id="quantity" value="1" min="1">
-        <button id="plus">+</button>
-      </div>
-
-      <div class="message-box">
-        <label for="message">رسالتك مع الهدية:</label>
-        <textarea id="message" placeholder="اكتبي هنا رسالتك..."></textarea>
-      </div>
-
-      <div class="buttons">
-        <button class="buy-btn">إضافة إلى السلة 🛒</button>
-        <button class="btn btn-outline">اشتري الآن 💝</button>
-      </div>
-    </div>
-  </div>
-
- 
-
-  <footer>
-    <p>بتله
-    <p> خيارك المثالي للحصول على افضل الباقات من الورد الطبيعي وايضا الصناعي ذو الشكل والملمس الطبيعي</p>
-    <p>©️ 2025 بتله</p>
-    <p>للتواصل: <a href="mailto:petal@gmail.com">petal@gmail.com</a></p>
-    <p>الهاتف: 055667702
-
-  </footer>
 <script src="script.js"></script>
- <script>
-    const plus = document.getElementById('plus');
-    const minus = document.getElementById('minus');
-    const quantityInput = document.getElementById('quantity');
-
-    plus.addEventListener('click', () => {
-      quantityInput.value = parseInt(quantityInput.value) + 1;
-    });
-
-    minus.addEventListener('click', () => {
-      if (parseInt(quantityInput.value) > 1) {
-        quantityInput.value = parseInt(quantityInput.value) - 1;
-      }
-    });
-  </script>
-
-
 </body>
 </html>
-
-
-

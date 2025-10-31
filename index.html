@@ -43,67 +43,6 @@
 <li><a href="#" onclick="openProfile()">حسابي</a></li>
 </div>
 
-<div id="searchBox" class="popup" aria-hidden="true">
-  <div class="popup-content" role="dialog" aria-labelledby="searchTitle">
-    <h3 id="searchTitle">ابحثي في المتجر</h3>
-    <input id="searchInput" type="text" placeholder="اكتبي كلمة البحث..." style="padding:8px; width:200px;" onkeydown="if(event.key==='Enter') performSearch()">
-    <br><br>
-    <div id="searchItems" style="max-height:180px; overflow:auto; text-align:right;"></div>
-    <br>
-    <button onclick="performSearch()">بحث</button>
-    <button onclick="resetSearch()">عرض الكل</button>
-    <button onclick="closeSearch()">إغلاق</button>
-  </div>
-</div>
-
-<div id="loginBox" class="popup" aria-hidden="true">
-  <div class="popup-content" role="dialog" aria-labelledby="">
-
-    <div id="loginForm">
-      <h2>تسجيل الدخول </h2>
-      <input id="loginUsername" type="text" placeholder="اسم المستخدم" />
-      <input id="loginPassword" type="password" placeholder="كلمة المرور" />
-      <button onclick="handleLogin()">دخول</button>
-      <p class="switchText">
-        ليس لديك حساب؟
-        <a href="#" onclick="toggleForm('signup')">إنشاء حساب جديد</a>
-      </p>
-      <button class="closeBtn" onclick="closeLogin()">إغلاق</button>
-    </div>
-
-    <div id="signupForm" style="display:none;">
-      <input id="signupUsername" type="text" placeholder="اسم المستخدم الجديد" />
-<input id="signupEmail" type="email" placeholder="البريد الإلكتروني" >
-      <input id="signupPassword" type="password" placeholder="كلمة المرور" />
-      <input id="signupConfirm" type="password" placeholder="تأكيد كلمة المرور" />
-      <button onclick="handleSignup()">إنشاء الحساب</button>
-      <p class="switchText">
-        لديك حساب بالفعل؟
-        <a href="#" onclick="toggleForm('login')">تسجيل الدخول</a>
-      </p>
-      <button class="closeBtn" onclick="closeLogin()">إغلاق</button>
-    </div>
-
-    <div id="welcomeMessage" style="display:none;">
-      <p id="welcomeText"></p>
-      <button onclick="logout()">تسجيل الخروج</button>
-      <button class="closeBtn" onclick="closeLogin()">إغلاق</button>
-    </div>
-  </div>
-</div>
-
-
-
-  <div id="cartBox" class="popup">
-    <div class="popup-content">
-      <h3>🛍️ سلة المشتريات</h3>
-      <p id="cartItems">السلة فارغة حالياً</p>
-      <button onclick="closeCart()">إغلاق</button>
-    </div>
-  </div>
-
-
-
 <section class="hero">
     <div class="hero-content">
         <h1>جمال الزهور يروي مشاعرك</h1>
@@ -173,6 +112,7 @@
       <h3>باقة ورد التوليب</h3>
       <p class="price">350 ريال</p>
       <button onclick="addToCart('باقة ورد التوليب', 350)">إضافة إلى السلة</button>
+      <a class="btnd" href="product.html?name=باقة+ورد+التوليب&price=350&img=img/p5.jpg" class="details-btn">عرض التفاصيل</a>
     </div>
 
     <div class="product-card">
@@ -180,6 +120,7 @@
       <h3>باقة الورد الأنيق</h3>
       <p class="price">420 ريال</p>
       <button onclick="addToCart('باقة الورد الأنيق', 420)">إضافة إلى السلة</button>
+      <a class="btnd" href="product.html?name=باقة+الورد+الأنيق&price=420&img=img/bestseller2.jpeg" class="details-btn">عرض التفاصيل</a>
     </div>
 
     <div class="product-card">
@@ -187,6 +128,7 @@
       <h3>بوكيه ورد أحمر فاخر</h3>
       <p class="price">380 ريال</p>
       <button onclick="addToCart('بوكيه ورد أحمر فاخر', 380)">إضافة إلى السلة</button>
+      <a class="btnd" href="product.html?name=بوكيه+ورد+أحمر+فاخر&price=380&img=img/bestseller3.jpeg" class="details-btn">عرض التفاصيل</a>
     </div>
 
     <div class="product-card">
@@ -194,13 +136,16 @@
       <h3>ورد الأوركيد الأنيق</h3>
       <p class="price">500 ريال</p>
       <button onclick="addToCart('ورد الأوركيد الأنيق', 500)">إضافة إلى السلة</button>
+      <a class="btnd" href="product.html?name=ورد+الأوركيد+الأنيق&price=500&img=img/bestseller1.jpeg" class="details-btn">عرض التفاصيل</a>
     </div>
+
   </div>
 
   <div class="view-more">
     <a href="shop.html" class="more-btn">عرض المزيد</a>
   </div>
 </section>
+
 
 <section class="subscription-section" id="subscription">
   <div class="subscription-container">
@@ -244,6 +189,7 @@
       <h3>باقة ورد الخزامى</h3>
       <p class="price">350 ريال</p>
       <button onclick="addToCart('باقة ورد الخزامى', 350)">إضافة إلى السلة</button>
+      <a class="btnd" href="product.html?name=باقة+ورد+الخزامى&price=350&img=img/p1.jpg" class="details-btn">عرض التفاصيل</a>
     </div>
 
     <div class="product-card">
@@ -251,6 +197,7 @@
       <h3>بوكيه ورد الوردي الفاخر</h3>
       <p class="price">420 ريال</p>
       <button onclick="addToCart('بوكيه ورد الوردي الفاخر', 420)">إضافة إلى السلة</button>
+      <a class="btnd" href="product.html?name=بوكيه+ورد+الوردي+الفاخر&price=420&img=img/p2.jpg" class="details-btn">عرض التفاصيل</a>
     </div>
 
     <div class="product-card">
@@ -258,6 +205,7 @@
       <h3>بوكيه ورد أبيض فاخر</h3>
       <p class="price">380 ريال</p>
       <button onclick="addToCart('بوكيه ورد أبيض فاخر', 380)">إضافة إلى السلة</button>
+      <a class="btnd" href="product.html?name=بوكيه+ورد+أبيض+فاخر&price=380&img=img/p3.jpg" class="details-btn">عرض التفاصيل</a>
     </div>
 
     <div class="product-card">
@@ -265,6 +213,7 @@
       <h3>ورد الأوركيد الملكي</h3>
       <p class="price">500 ريال</p>
       <button onclick="addToCart('ورد الأوركيد الملكي', 500)">إضافة إلى السلة</button>
+      <a class="btnd" href="product.html?name=ورد+الأوركيد+الملكي&price=500&img=img/p4.jpg" class="details-btn">عرض التفاصيل</a>
     </div>
 
   </div>
@@ -273,6 +222,7 @@
     <a href="shop.html" class="more-btn">عرض المزيد</a>
   </div>
 </section>
+
 
  <section class="benefits-section">
   <h2 class="section-title">مميزاتنا</h2>
@@ -345,6 +295,68 @@
   </footer>
 
 <script src="script.js"></script>
+
+<div id="searchBox" class="popup" aria-hidden="true">
+  <div class="popup-content" role="dialog" aria-labelledby="searchTitle">
+    <h3 id="searchTitle">ابحثي في المتجر</h3>
+    <input id="searchInput" type="text" placeholder="اكتبي كلمة البحث..." style="padding:8px; width:200px;" onkeydown="if(event.key==='Enter') performSearch()">
+    <br><br>
+    <div id="searchItems" style="max-height:180px; overflow:auto; text-align:right;"></div>
+    <br>
+    <button onclick="performSearch()">بحث</button>
+    <button onclick="resetSearch()">عرض الكل</button>
+    <button onclick="closeSearch()">إغلاق</button>
+  </div>
+</div>
+
+<div id="loginBox" class="popup" aria-hidden="true">
+  <div class="popup-content" role="dialog" aria-labelledby="">
+
+    <div id="loginForm">
+      <h2>تسجيل الدخول </h2>
+      <input id="loginUsername" type="text" placeholder="اسم المستخدم" />
+      <input id="loginPassword" type="password" placeholder="كلمة المرور" />
+      <button onclick="handleLogin()">دخول</button>
+      <p class="switchText">
+        ليس لديك حساب؟
+        <a href="#" onclick="toggleForm('signup')">إنشاء حساب جديد</a>
+      </p>
+      <button class="closeBtn" onclick="closeLogin()">إغلاق</button>
+    </div>
+
+    <div id="signupForm" style="display:none;">
+      <input id="signupUsername" type="text" placeholder="اسم المستخدم الجديد" />
+<input id="signupEmail" type="email" placeholder="البريد الإلكتروني" >
+      <input id="signupPassword" type="password" placeholder="كلمة المرور" />
+      <input id="signupConfirm" type="password" placeholder="تأكيد كلمة المرور" />
+      <button onclick="handleSignup()">إنشاء الحساب</button>
+      <p class="switchText">
+        لديك حساب بالفعل؟
+        <a href="#" onclick="toggleForm('login')">تسجيل الدخول</a>
+      </p>
+      <button class="closeBtn" onclick="closeLogin()">إغلاق</button>
+    </div>
+
+    <div id="welcomeMessage" style="display:none;">
+      <p id="welcomeText"></p>
+      <button onclick="logout()">تسجيل الخروج</button>
+      <button class="closeBtn" onclick="closeLogin()">إغلاق</button>
+    </div>
+  </div>
+</div>
+
+
+
+  <div id="cartBox" class="popup">
+    <div class="popup-content">
+      <h3>🛍️ سلة المشتريات</h3>
+      <p id="cartItems">السلة فارغة حالياً</p>
+      <button onclick="closeCart()">إغلاق</button>
+    </div>
+  </div>
+
+
+
 <div id="profileBox" class="popup">
   <div class="popup-content">
     <h3>حسابي</h3>
