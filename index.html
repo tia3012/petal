@@ -33,12 +33,10 @@
   <button class="close-btn" onclick="toggleMenu()">×</button>
   <h3>القائمة الرئيسية</h3>
   <a href="index.html"> الصفحة الرئيسية</a>
-  <a href=shop.html> المتجر</a>
-  <a href="#aboutUs"> من نحن</a>
-  <a href="#bestsellers"> افضل المبيعات </a>
+  <a href=shop.html> المنتجات</a>
+  <a href="#gifts"> الهدايا</a>
   <a href="#subscription"> الاشتراكات</a>
-  <a href="#bigDeals"> عروض مميزة</a>
-  <a href="#contact"> تواصل معنا</a>
+  
   <hr style="border:0.5px solid #D7D4C9; margin:15px 0;">
 <li><a href="#" onclick="openProfile()">حسابي</a></li>
 </div>
@@ -52,7 +50,7 @@
 </section>
 
 <section class="bestsellers" id="bestsellers">
-  <h2 class="section-title">الأكثر مبيعًا</h2>
+  <h2 class="section-title">منتجاتنا </h2>
   <div class="products-container">
 
     <div class="product-card">
@@ -89,9 +87,6 @@
 
   </div>
 
-  <div class="view-more">
-    <a href="shop.html" class="more-btn">عرض المزيد</a>
-  </div>
 </section>
 
 
@@ -128,8 +123,8 @@
   </div>
 </section>
 
-<section class="bestsellers" id="bigDeals">
-  <h2 class="section-title">عروض مميزة</h2>
+<section class="bestsellers" id="gifts">
+  <h2 class="section-title">قسم الهدايا</h2>
   <div class="products-container">
 
     <div class="product-card">
@@ -141,19 +136,27 @@
     </div>
 
     <div class="product-card">
-      <img src="img/p2.jpg" alt="بوكيه ورد الوردي الفاخر">
-      <h3>بوكيه ورد الوردي الفاخر</h3>
-      <p class="price">420 ريال</p>
-      <button onclick="addToCart('بوكيه ورد الوردي الفاخر', 420)">إضافة إلى السلة</button>
-      <a class="btnd" href="product.html?name=بوكيه+ورد+الوردي+الفاخر&price=420&img=img/p2.jpg" class="details-btn">عرض التفاصيل</a>
+      <img src="img/c6.jpeg" alt="كيك شوكولاتة">
+      <h3>كيك شوكولاتة</h3>
+      <p>120 ريال</p>
+      <button onclick="addToCart('كيك شوكولاتة',120)">إضافة إلى السلة</button>
+      <a class="btnd" href="product.html?name=كيك+شوكولاتة&price=120&img=img/c6.jpeg" class="details-btn">عرض التفاصيل</a>
     </div>
 
     <div class="product-card">
-      <img src="img/p3.jpg" alt="بوكيه ورد أبيض فاخر">
-      <h3>بوكيه ورد أبيض فاخر</h3>
-      <p class="price">380 ريال</p>
-      <button onclick="addToCart('بوكيه ورد أبيض فاخر', 380)">إضافة إلى السلة</button>
-      <a class="btnd" href="product.html?name=بوكيه+ورد+أبيض+فاخر&price=380&img=img/p3.jpg" class="details-btn">عرض التفاصيل</a>
+      <img src="img/c1.jpg" alt="كيك فانيليا">
+      <h3>كيك فانيليا</h3>
+      <p>100 ريال</p>
+      <button onclick="addToCart('كيك فانيليا',100)">إضافة إلى السلة</button>
+      <a class="btnd" href="product.html?name=كيك+فانيليا&price=100&img=img/c1.jpg" class="details-btn">عرض التفاصيل</a>
+    </div>
+
+    <div class="product-card">
+      <img src="img/c5.jpg" alt="كيك فراولة">
+      <h3>كيك فراولة</h3>
+      <p>110 ريال</p>
+      <button onclick="addToCart('كيك فراولة',110)">إضافة إلى السلة</button>
+      <a class="btnd" href="product.html?name=كيك+فراولة&price=110&img=img/c5.jpg" class="details-btn">عرض التفاصيل</a>
     </div>
 
     <div class="product-card">
@@ -166,43 +169,6 @@
 
   </div>
 
-  <div class="view-more">
-    <a href="shop.html" class="more-btn">عرض المزيد</a>
-  </div>
-</section>
-
-
- <section class="benefits-section">
-  <h2 class="section-title">مميزاتنا</h2>
-  <div class="benefits-slider">
-
-    <div class="benefit-slide active">
-      <img src="img/5.jpeg" alt="جودة الزهور">
-      <div class="benefit-text">
-        <h3>ضمان النضارة</h3>
-        <p>نضمن لك أفضل جودة للزهور بفضل اختيارنا لأجود المزارع، لتصلك زهور طازجة تعبّر عن مشاعرك بأناقة.</p>
-      </div>
-    </div>
-
-    <div class="benefit-slide">
-      <img src="img/4.jpeg" alt="تغليف أنيق">
-      <div class="benefit-text">
-        <h3>تغليف فاخر</h3>
-        <p>نهتم بأدق التفاصيل من لحظة اختيار الوردة حتى تغليفها، لتصل هديتك بشكل راقٍ ومميز.</p>
-      </div>
-    </div>
-
-    <div class="benefit-slide">
-      <img src="img/6.jpeg" alt="توصيل سريع">
-      <div class="benefit-text">
-        <h3>توصيل سريع</h3>
-        <p>نقدّم خدمة توصيل فورية داخل المدينة، لتصل الزهور في الوقت المناسب دون أي تأخير.</p>
-      </div>
-    </div>
-
-    <button class="prev">&#10094;</button>
-    <button class="next">&#10095;</button>
-  </div>
 </section>
 
 

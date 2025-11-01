@@ -270,7 +270,7 @@
 
 
 .hero {
-    background-image: url('./img/hero.jpg');
+    background-image: url('./img/logo.png');
     background-size: cover;
     background-position: center;
     height: 85vh;
@@ -286,7 +286,7 @@
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background-color: rgba(11, 61, 46, 0.323);
+    background-color: rgba(111, 6, 62, 0.104);
 }
 
 .hero-content {
