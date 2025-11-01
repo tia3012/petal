@@ -1,10 +1,8 @@
 
-// ✅ ====== القائمة الجانبية ======
 function toggleMenu() {
   document.getElementById("sideMenu").classList.toggle("active");
 }
 
-// ✅ ====== البحث ======
 function openSearch() {
   const box = document.getElementById("searchBox");
   box.style.display = "flex";
@@ -115,7 +113,7 @@ function handleSignup() {
 
   const exists = users.find((u) => u.name === name);
   if (exists) {
-    alert("❌ هذا الاسم مستخدم بالفعل.");
+    alert(" هذا الاسم مستخدم بالفعل.");
     return;
   }
 
@@ -125,7 +123,7 @@ function handleSignup() {
   localStorage.setItem("loggedInUser", JSON.stringify(newUser));
 
   showWelcome(newUser.name);
-  showNotification("✅ تم إنشاء الحساب بنجاح!");
+  showNotification(" تم إنشاء الحساب بنجاح!");
 }
 
 function handleLogin() {
@@ -176,16 +174,15 @@ function logout() {
     alert("تم الاشتراك بنجاح! 🎉");
     closeSubscribe();
   }
-// ✅ ====== عرض معلومات الحساب ======
 function openProfile() {
   const user = JSON.parse(localStorage.getItem("loggedInUser"));
   hideAllPopups();
   const box = document.getElementById("profileBox");
 
   if (user) {
-    document.getElementById("profileName").textContent = `👋 مرحبًا، ${user.name}`;
-    document.getElementById("profileEmail").textContent = `📧 البريد: ${user.email}`;
-    document.getElementById("profilePassword").textContent = `🔒 كلمة المرور: ${user.password}`;
+    document.getElementById("profileName").textContent = ` مرحبًا، ${user.name}`;
+    document.getElementById("profileEmail").textContent = ` البريد: ${user.email}`;
+    document.getElementById("profilePassword").textContent = ` كلمة المرور: ${user.password}`;
     box.style.display = "flex";
   } else {
     openLogin();
@@ -196,7 +193,6 @@ function closeProfile() {
   document.getElementById("profileBox").style.display = "none";
 }
 
-// ✅ إغلاق كل البوكسات أولاً قبل فتح أي بوكس جديد
 function hideAllPopups() {
   document.querySelectorAll(".popup").forEach(p => p.style.display = "none");
 }
@@ -237,16 +233,14 @@ let currentSlide = 0;
   document.querySelector('.next').addEventListener('click', nextSlide);
   document.querySelector('.prev').addEventListener('click', prevSlide);
 
-  // تشغيل تلقائي كل 5 ثوانٍ
   setInterval(nextSlide, 5000);
   document.querySelector('.contact-form').addEventListener('submit', function(e) {
     e.preventDefault();
     showNotification('تم إرسال رسالتك بنجاح! سنقوم بالرد قريبًا 💌');
     this.reset();
   });
- // ✅ ====== فورم الاشتراك الشهري ======
 function openSubscribe() {
-  hideAllPopups(); // عشان ما تتفتحش فورم تانية في نفس الوقت
+  hideAllPopups(); 
   document.getElementById("subscribePopup").style.display = "flex";
 }
 
